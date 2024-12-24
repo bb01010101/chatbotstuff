@@ -6,8 +6,8 @@ import { ReactNode } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Brian\'s evil chatbot',
-  description: 'A simple chatbot bent on destroying the world.',
+  title: 'OpenAI and AI SDK Chatbot',
+  description: 'A simple chatbot built using the AI SDK and gpt-4o-mini.',
 }
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -22,3 +22,6 @@ export default function Layout({ children }: { children: ReactNode }) {
   )
 }
 
+
+
+import './globals.css'
