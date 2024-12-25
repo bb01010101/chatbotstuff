@@ -1,3 +1,4 @@
+import './globals.css'
 import { cn } from '@/lib/utils'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { Inter } from 'next/font/google'
@@ -6,8 +7,8 @@ import { ReactNode } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'OpenAI and AI SDK Chatbot',
-  description: 'A simple chatbot built using the AI SDK and gpt-4o-mini.',
+  title: 'Virtual Running Coach AI',
+  description: 'Your personal AI running coach for customized training plans, workouts, and holistic running advice.',
 }
 
 export default function Layout({ children }: { children: ReactNode }) {
