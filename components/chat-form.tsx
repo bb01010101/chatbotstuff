@@ -1,9 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-
 import { useChat } from 'ai/react'
-
 import { ArrowUpIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
@@ -31,19 +29,52 @@ export function ChatForm({
   }
 
   const header = (
-    <header className="m-auto flex max-w-96 flex-col gap-5 text-center">
+    <header className="m-auto flex max-w-[600px] flex-col gap-5 text-center">
       <h1 className="text-2xl font-semibold leading-none tracking-tight">
-        Brian Boler's Chatbot
+        Your AI Running Coach
       </h1>
-      <p className="text-muted-foreground text-sm">
-        This is an AI chatbot app template built with{' '}
-        <span className="text-foreground">Next.js</span>, the{' '}
-        <span className="text-foreground">Vercel AI SDK</span>, and{' '}
-        <span className="text-foreground">Vercel KV</span>.
-      </p>
-      <p className="text-muted-foreground text-sm">
-        Connect an API Key from your provider and send a message to get started.
-      </p>
+      <div className="space-y-4">
+        <p className="text-muted-foreground">
+          I'm here to help you achieve your running goals. Ask me about:
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+          <div className="bg-gray-50 p-3 rounded-lg">
+            <h3 className="font-medium mb-2">Training Plans</h3>
+            <ul className="text-muted-foreground text-left space-y-1">
+              <li>• Custom marathon/half plans</li>
+              <li>• Weekly training blocks</li>
+              <li>• Race-specific workouts</li>
+            </ul>
+          </div>
+          <div className="bg-gray-50 p-3 rounded-lg">
+            <h3 className="font-medium mb-2">Performance</h3>
+            <ul className="text-muted-foreground text-left space-y-1">
+              <li>• Pacing strategies</li>
+              <li>• Form & technique</li>
+              <li>• Race preparation</li>
+            </ul>
+          </div>
+          <div className="bg-gray-50 p-3 rounded-lg">
+            <h3 className="font-medium mb-2">Recovery & Health</h3>
+            <ul className="text-muted-foreground text-left space-y-1">
+              <li>• Injury prevention</li>
+              <li>• Recovery strategies</li>
+              <li>• Runner's nutrition</li>
+            </ul>
+          </div>
+          <div className="bg-gray-50 p-3 rounded-lg">
+            <h3 className="font-medium mb-2">Mental Game</h3>
+            <ul className="text-muted-foreground text-left space-y-1">
+              <li>• Race day mindset</li>
+              <li>• Goal setting</li>
+              <li>• Mental toughness</li>
+            </ul>
+          </div>
+        </div>
+        <p className="text-sm text-muted-foreground mt-4">
+          Start by telling me about your running experience and goals!
+        </p>
+      </div>
     </header>
   )
 
@@ -53,7 +84,7 @@ export function ChatForm({
         <div
           key={index}
           data-role={message.role}
-          className="max-w-[80%] rounded-xl px-3 py-2 text-sm data-[role=assistant]:self-start data-[role=user]:self-end data-[role=assistant]:bg-gray-100 data-[role=user]:bg-blue-500 data-[role=assistant]:text-black data-[role=user]:text-white"
+          className="max-w-[80%] whitespace-pre-wrap rounded-xl px-4 py-2 text-sm data-[role=assistant]:self-start data-[role=user]:self-end data-[role=assistant]:bg-gray-100 data-[role=user]:bg-blue-500 data-[role=assistant]:text-black data-[role=user]:text-white"
         >
           {message.content}
         </div>
@@ -64,7 +95,7 @@ export function ChatForm({
   return (
     <main
       className={cn(
-        'ring-none mx-auto flex h-svh max-h-svh w-full max-w-[35rem] flex-col items-stretch border-none',
+        'ring-none mx-auto flex h-svh max-h-svh w-full max-w-[800px] flex-col items-stretch border-none',
         className
       )}
       {...props}
@@ -80,7 +111,7 @@ export function ChatForm({
           onKeyDown={handleKeyDown}
           onChange={v => setInput(v)}
           value={input}
-          placeholder="Enter a message"
+          placeholder="Ask about training plans, workouts, or running advice..."
           className="placeholder:text-muted-foreground flex-1 bg-transparent focus:outline-none"
         />
         <Tooltip>
@@ -93,9 +124,11 @@ export function ChatForm({
               <ArrowUpIcon size={16} />
             </Button>
           </TooltipTrigger>
-          <TooltipContent sideOffset={12}>Submit</TooltipContent>
+          <TooltipContent sideOffset={12}>Send message</TooltipContent>
         </Tooltip>
       </form>
     </main>
   )
 }
+
+export { ChatForm as AIChatHistory }
